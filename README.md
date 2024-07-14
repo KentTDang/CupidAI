@@ -24,10 +24,14 @@ The user can ask the agents what disasters are occuring and what steps to take
 # High Priority
 - [x] Connect to OpenAI 
 - [x] Choose a model
-- [ ] Create a prompt for each agent
+- [x] Create a prompt for each agent
 - [x] Store data locally
+- [ ] Create Agent Graph
+- [ ] Connect Backend to Frontend
+
 
 # Low Priority
 - [ ] Move .venv into backend folder
 - [ ] Connect to Firebase
+- [ ] Design Website
 
