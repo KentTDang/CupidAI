@@ -22,10 +22,10 @@ The user can enter the current disaster and the agent will conduct research on t
 The user can ask the agents what disasters are occuring and what steps to take
 
 # High Priority
-- [ ] Connect to OpenAI 
-- [ ] Choose a model
+- [x] Connect to OpenAI 
+- [x] Choose a model
 - [ ] Create a prompt for each agent
-- [ ] Store data locally
+- [x] Store data locally
 
 # Low Priority
 - [ ] Move .venv into backend folder
