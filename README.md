@@ -26,10 +26,8 @@ The user can ask the agents what disasters are occuring and what steps to take
 - [ ] Choose a model
 - [ ] Create a prompt for each agent
 - [ ] Store data locally
-- [ ] 
 
 # Low Priority
 - [ ] Move .venv into backend folder
 - [ ] Connect to Firebase
-- [ ]
 
