@@ -1,37 +1,49 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import axios from "axios"
+import { useState } from 'react';
+import axios from 'axios';
+import './App.css';
 
 function App() {
-  const [array, setArray] = useState([]);
+  const [task, setTask] = useState('');
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const fetchAPI = async () => {
+  const handleInputChange = (e) => {
+    setTask(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
     try {
-      const response = await axios.get("http://localhost:8080/api/disaster-response");
-      console.log(response);
-      setArray(response.data);
-    } catch(e) {
-      console.error("Could not fetch api: ", e);
+      const response = await axios.post('http://localhost:8080/api/disaster-response', { task });
+      setResults(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false);
     }
-  }
-
-  useEffect(() => {
-    fetchAPI();
-  }, [])
+  };
 
   return (
-    <>
-      <div className="read-the-docs">
-        {array.map((plan, index) => (
+    <div className="App">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={task}
+          onChange={handleInputChange}
+          placeholder="Enter task"
+        />
+        <button type="submit">Submit</button>
+      </form>
+      <div className="results">
+        {results.map((item, index) => (
           <div key={index}>
-            <pre>{JSON.stringify(plan, null, 2)}</pre>
+            <pre>{JSON.stringify(item, null, 2)}</pre>
           </div>
         ))}
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
