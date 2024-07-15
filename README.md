@@ -22,6 +22,7 @@ The system should optimize resource allocation, logistics, communication, and re
 - [x] Store data locally
 - [x] Create Agent Graph
 - [ ] Connect Backend to Frontend
+- [ ] User input task
 
 # Low Priority
 - [ ] Connect to Firebase
