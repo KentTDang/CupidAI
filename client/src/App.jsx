@@ -5,7 +5,6 @@ function App() {
   const [task, setTask] = useState('');
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [testData, setTestData] = useState([]);
 
   useEffect(() => {
     fetchAPI();
@@ -14,8 +13,7 @@ function App() {
   const fetchAPI = async () => {
     try {
       const response = await axios.get('http://localhost:8080/api/disaster-response');
-      setTestData(response.data);
-      console.log(testData);
+      setTask(response.data);
     }catch (e) {
       console.error(e);
     }
@@ -27,16 +25,16 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setResults([]);
     setLoading(true);
     try {
       const response = await axios.post('http://localhost:8080/api/disaster-response', { task });
       setResults(response.data);
-      console.log(response);
-      console.log(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
       setLoading(false);
+      setTask('');
     }
   };
 
@@ -53,9 +51,13 @@ function App() {
       </form>
       <div className="results">
         {results.map((item, index) => (
+          <>
+          {/* {loading} ? */}
           <div key={index}>
             <pre>{JSON.stringify(item, null, 2)}</pre>
           </div>
+          </>
+          
         ))}
       </div>
     </div>

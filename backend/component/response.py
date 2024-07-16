@@ -12,6 +12,7 @@ from flask_cors import CORS
 import operator
 import sqlite3
 import uuid
+import json
 
 
 # Initialize dotenv to load environment variables
@@ -178,14 +179,18 @@ cors = CORS(app, origins='*')
 
 response_instance = eresponse()
 
-@app.route("/api/disaster-response", methods=['GET'])
+@app.route("/api/disaster-response", methods=['GET', 'POST'])
 def get_disaster_response():
+    task = 'default data'
 
-    # if request.method == 'POST':
-    #     print('POST REQUEST')
+    print(request.data)
+    if request.method == 'POST':
+        input = request.data.decode('utf-8')
+        task = json.loads(input)["task"]
+
     result = []
     for s in response_instance.graph.stream({
-    'task': "Hurricane Beryl ",
+    'task': task,
     'max_revisions': 2,
     'revision_number': 1,
     }, thread):
