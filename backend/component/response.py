@@ -94,7 +94,7 @@ class eresponse():
         memory = SqliteSaver(conn=sqlite3.connect(":memory:", check_same_thread = False))
         self.graph = builder.compile(
             checkpointer = memory,
-            interrupt_after=['planner', 'generate', 'reflect', 'research_plan', 'research_critique']
+            # interrupt_after=['planner', 'generate', 'reflect', 'research_plan', 'research_critique']
         )
         
     def plan_node(self, state: AgentState):
@@ -115,8 +115,8 @@ class eresponse():
         ])
         content = state['content'] or [] # add to content
         for q in queries.queries:
-            response = self.tavily.search(query = q, max_result = 2)
-            for r in response['result']:
+            response = self.tavily.search(query=q, max_results=2)
+            for r in response['results']:
                 content.append(r['content'])
         return {"content": content,
                 "queries": queries.queries,
@@ -159,7 +159,7 @@ class eresponse():
         ])
         content = state['content'] or []
         for q in queries.queries:
-            response = self.tavily.search(query = q, max_results = 2)
+            response = self.tavily.search(query=q, max_results=2)
             for r in response['results']:
                 content.append(r['content'])
         return {"content": content,
@@ -180,11 +180,14 @@ response_instance = eresponse()
 
 @app.route("/api/disaster-response", methods=['GET'])
 def get_disaster_response():
+
+    # if request.method == 'POST':
+    #     print('POST REQUEST')
     result = []
     for s in response_instance.graph.stream({
     'task': "Hurricane Beryl ",
-    "max_revisions": 2,
-    "revision_number": 1,
+    'max_revisions': 2,
+    'revision_number': 1,
     }, thread):
         print(s)
         result.append(s)
