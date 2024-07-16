@@ -47,7 +47,7 @@ export default function Main() {
 
         <div className="greet">
           <p>
-            <span>Welcome</span>
+            <span>Welcome</span><img src={assets.cat_gif} alt="" />
           </p>
           <p>How can I help you today?</p>
         </div>
