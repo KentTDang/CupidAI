@@ -29,4 +29,4 @@ The system should optimize resource allocation, logistics, communication, and re
 - [ ] Design Website
 - [ ] Refactor code base
 - [ ] Documentation
-
+- [ ] Firebase Auth system for UUID
