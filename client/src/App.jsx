@@ -1,37 +1,15 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import axios from "axios"
+import React from 'react';
+import Sidebar from './components/Sidebar/Sidebar.jsx';
+import Main from './components/Main/Main.jsx';
 
 function App() {
-  const [array, setArray] = useState([]);
-
-  const fetchAPI = async () => {
-    try {
-      const response = await axios.get("http://localhost:8080/api/disaster-response");
-      console.log(response);
-      setArray(response.data);
-    } catch(e) {
-      console.error("Could not fetch api: ", e);
-    }
-  }
-
-  useEffect(() => {
-    fetchAPI();
-  }, [])
 
   return (
     <>
-      <div className="read-the-docs">
-        {array.map((plan, index) => (
-          <div key={index}>
-            <pre>{JSON.stringify(plan, null, 2)}</pre>
-          </div>
-        ))}
-      </div>
+      <Sidebar />
+      <Main />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

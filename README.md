@@ -22,10 +22,23 @@ The system should optimize resource allocation, logistics, communication, and re
 - [x] Store data locally
 - [x] Create Agent Graph
 - [ ] Connect Backend to Frontend
+- [ ] User input task
+- [ ] Format Response to show what they searched for
+- [ ] Loading
+- [ ] Content history thread
 
 # Low Priority
 - [ ] Connect to Firebase
 - [ ] Design Website
 - [ ] Refactor code base
-- [ ] Documentation
+- [ ] Documentation - quert
 
+- chatgpt or google search
+- keep the prompt
+- seperate questions to expand on
+- answer a question before they even know they have it
+- links
+- images news video - maybe
+- pdf download of plan 
+- recomennded items to buy - agent
+- checklist 
