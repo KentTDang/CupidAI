@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Sidebar from './components/Sidebar/Sidebar';
+import Main from './components/Main/Main';
 
 function App() {
   const [task, setTask] = useState('');
@@ -39,28 +41,32 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={task}
-          onChange={handleInputChange}
-          placeholder="Enter task"
-        />
-        <button type="submit">Submit</button>
-      </form>
-      <div className="results">
-        {results.map((item, index) => (
-          <>
-          {/* {loading} ? */}
-          <div key={index}>
-            <pre>{JSON.stringify(item, null, 2)}</pre>
-          </div>
-          </>
+
+    <>
+      <Sidebar />
+      <Main />
+    </>
+    // <div className="App">
+    //   <form onSubmit={handleSubmit}>
+    //     <input
+    //       type="text"
+    //       value={task}
+    //       onChange={handleInputChange}
+    //       placeholder="Enter task"
+    //     />
+    //     <button type="submit">Submit</button>
+    //   </form>
+    //   <div className="results">
+    //     {results.map((item, index) => (
+    //       <>
+    //       <div key={index}>
+    //         <pre>{JSON.stringify(item, null, 2)}</pre>
+    //       </div>
+    //       </>
           
-        ))}
-      </div>
-    </div>
+    //     ))}
+    //   </div>
+    // </div>
   );
 }
 
