@@ -17,21 +17,19 @@ The system should optimize resource allocation, logistics, communication, and re
 - Task: Make high-level decisions based on input from other agents
 
 # High Priority
-- [x] Connect to OpenAI & choose Model
-- [x] Create a prompt for each agent
-- [x] Store data locally
-- [x] Create Agent Graph
-- [ ] Connect Backend to Frontend
-- [ ] User input task
-- [ ] Format Response to show what they searched for
-- [ ] Loading
-- [ ] Content history thread
+- [ ] Format Agent Output
+- [ ] Display Links
+- [ ] Refactor Backend with new prompts
+- [ ] Add new agents
+- [ ] Chat History on sidebar
+- [ ] Loading 
+- [ ] Typing animation
+- [ ] Disable Search bar when loading
+- [ ] Hold value on search bar
+- [ ] Follow Up Questions 
 
 # Low Priority
-- [ ] Connect to Firebase
-- [ ] Design Website
-- [ ] Refactor code base
-- [ ] Documentation - quert
+- [ ] Documentation
 
 - chatgpt or google search
 - keep the prompt

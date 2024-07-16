@@ -10,20 +10,20 @@ export default function Main() {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetchAPI();
-  }, []);
+  // useEffect(() => {
+  //   fetchAPI();
+  // }, []);
 
-  const fetchAPI = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:8080/api/disaster-response"
-      );
-      setTask(response.data);
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  // const fetchAPI = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "http://localhost:8080/api/disaster-response"
+  //     );
+  //     setTask(response.data);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
 
   const handleInputChange = (e) => {
     setTask(e.target.value);
@@ -39,6 +39,8 @@ export default function Main() {
         { task }
       );
       setResults(response.data);
+      setHistory(prevHistory => [...prevHistory, results]);
+      console.log(history);
       setShowResult(true);
     } catch (error) {
       console.error("Error fetching data:", error);
