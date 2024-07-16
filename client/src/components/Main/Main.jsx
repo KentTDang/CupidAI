@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Main.css";
 import { assets } from "../../assets/assets";
+import {TailSpin} from 'react-loader-spinner'
 
 export default function Main() {
   const [task, setTask] = useState("");
@@ -99,9 +100,11 @@ export default function Main() {
               disabled
             />
             <div>
-              <button type="submit" disabled className="submit-btn">
-                <img src={assets.send_icon} alt="" />
-              </button>
+            <TailSpin 
+              height="25"
+              color="#585858"
+              width= "24"
+              />
             </div>
           </form> 
           }
