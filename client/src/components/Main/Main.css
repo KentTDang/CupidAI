@@ -114,5 +114,9 @@
     margin: 15px auto;
     text-align: center;
     font-weight: 300;
+}
 
+.main .submit-btn {
+    border: none;
+    background: transparent;
 }
