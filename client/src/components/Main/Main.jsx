@@ -10,21 +10,6 @@ export default function Main() {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   fetchAPI();
-  // }, []);
-
-  // const fetchAPI = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "http://localhost:8080/api/disaster-response"
-  //     );
-  //     setTask(response.data);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // };
-
   const handleInputChange = (e) => {
     setTask(e.target.value);
   };
@@ -84,11 +69,9 @@ export default function Main() {
         null}
         <div className="results">
           {results.map((item, index) => (
-            <>
               <div key={index}>
                 <pre>{JSON.stringify(item, null, 2)}</pre>
               </div>
-            </>
           ))}
         </div>
         <div className="main-bottom">
