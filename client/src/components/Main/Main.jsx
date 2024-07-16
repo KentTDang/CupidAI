@@ -85,7 +85,7 @@ export default function Main() {
               placeholder="Enter a prompt here"
             />
             <div>
-              <button type="submit" className="submit-btn">
+              <button type="submit" className="submit-btn" disabled={!task.trim()}>
                 <img src={assets.send_icon} alt="" />
               </button>
             </div>

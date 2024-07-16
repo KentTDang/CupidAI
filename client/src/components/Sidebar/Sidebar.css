@@ -13,11 +13,11 @@
 
 .sidebar .menu {
     display: block;
-    margin-left: 10px;
+    margin-left: 15px;
     cursor: pointer;
 }
 
-.sidebar .new-chat {
+.sidebar .new-chat-btn {
     margin-top: 50px;
     display: inline-flex;
     align-items: center;
@@ -27,7 +27,7 @@
     border-radius: 50px;
     font-size: 14px;
     color: grey;
-    cursor: pointer;
+    border: none;
 }
 
 .sidebar .recent {

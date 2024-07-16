@@ -6,14 +6,30 @@ export default function Sidebar() {
 
   const [extended, setExtended] = useState(false);
 
+  const handleNewThread = () => {
+    window.location.reload();
+  }
+
   return (
     <div className="sidebar">
       <div className="top">
         <img onClick={()=> setExtended(!extended)} className="menu" src={assets.menu_icon} alt="" />
-        <div className="new-chat">
+        {extended? 
+        // <div className="new-chat">
+          <button onClick={handleNewThread} className="new-chat-btn">
+          <img src={assets.plus_icon} alt=""/> <p>New Chat</p>
+          </button>
+        // </div> 
+        : 
+        // <div className="new-chat">
+          <button onClick={handleNewThread} className="new-chat-btn">
           <img src={assets.plus_icon} alt="" />
-          {extended? <p>New Chat</p> : null}
-        </div>
+          </button>
+        // </div> 
+        }
+
+
+
         {extended? <div className="recent">
           <p className="recent-title">Recent</p>
           <div className="recent-entry">
