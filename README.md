@@ -8,18 +8,6 @@ This project is an AI-based date planner that generates date plans based on user
 - Integrates research suggestions to enhance date plans
 - Provides critique and recommendations for improving date plans
 
-## Table of Contents
-
-- [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-  - [Running the Server](#running-the-server)
-  - [API Endpoint](#api-endpoint)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Setup
 
 ### Prerequisites
@@ -59,10 +47,10 @@ This project is an AI-based date planner that generates date plans based on user
 - Tavily API - Search engine built for AI Agents, used to retrieve data for dates
 - OpenAI API - Generates initial date plans based on user prompts and revises itself
 
-### Contribution
+## Contribution
 Contributions are welcome! Please fork the repository and create a pull request to contribute to this project.
 
-### Architecture
+## Architecture
 
 1. **Frontend:**
    - **Framework:** React
