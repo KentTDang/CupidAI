@@ -6,12 +6,9 @@ import { TailSpin } from "react-loader-spinner";
 
 export default function Main() {
   const [task, setTask] = useState("");
-  const [results, setResults] = useState([]);
   const [showResult, setShowResult] = useState(false);
-  const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const [planner, setPlanner] = useState("");
   const [research, setResearch] = useState("");
   const [draftText, setDraftText] = useState("");
 
@@ -25,7 +22,6 @@ export default function Main() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setResults([]);
     setLoading(true);
     try {
       const response = await axios.post(
@@ -37,16 +33,11 @@ export default function Main() {
         (item) => item.generate
       )?.generate;
 
-      const generatePlan = response.data.find(
-        (item) =>item.planner
-      )?.planner;
-
       const generateResearch = response.data.find((item)=> item.research_plan)?.research_plan;
 
       setShowResult(true);
 
       setDraftText(generateData.draft);
-      setPlanner(generatePlan.plan);
       setResearch(generateResearch.content);
       setHistory((prevHistory) => [...prevHistory, task]);
     

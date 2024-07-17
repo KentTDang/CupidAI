@@ -15,11 +15,28 @@ class DatePlanner:
         self._build_state_graph()
 
     def _define_prompts(self):
-        self.PLAN_PROMPT = """You are an expert date planner tasked with creating a comprehensive, interesting, and enjoyable date plan for a given prompt..."""
-        self.WRITER_PROMPT = """You are an expert date planner assistant tasked with writing a detailed date plan..."""
-        self.RESEARCH_PLAN_PROMPT = """You are an expert researcher tasked with providing information to enhance the following date plan..."""
-        self.REFLECTION_PROMPT = """You are an expert date planner reviewing a date plan..."""
-        self.RESEARCH_CRITIQUE_PROMPT = """You are an expert researcher tasked with providing information that can be used for making any requested revisions..."""
+        self.PLAN_PROMPT = """ou are an expert date planner tasked with creating a comprehensive, interesting, \
+                            and enjoyable date plan for a given prompt. Write such an outline for the user-provided \
+                            prompt, keeping in mind their current location, time, and preferences. \
+                            Provide an outline of the date plan along with any relevant notes or instructions \
+                            for the activities. Striclty only output the plan. """
+        self.WRITER_PROMPT = """You are an expert date planner assistant tasked with writing a detailed date plan. \
+                              Generate the best date plan possible for the user’s request and the initial outline. \
+                              If the user provides critique, respond with a revised version of your previous attempts. \
+                              Utilize all the information below as needed and return data in a similar format:
+                            ------
+                            {content}"""
+        self.RESEARCH_PLAN_PROMPT = """You are an expert researcher tasked with providing information \
+                                     to enhance the following date plan. Generate a list of search \
+                                     queries to gather relevant information, including but not limited \
+                                     to popular restaurants and activities based on social media and internet \
+                                     sources. Generate a maximum of 3 queries."""
+        self.REFLECTION_PROMPT = """ou are an expert date planner reviewing a date plan. \
+                                  Generate critique and recommendations for the user’s submission."""
+        self.RESEARCH_CRITIQUE_PROMPT = """You are an expert researcher tasked with providing information \
+                                         that can be used for making any requested revisions (as outlined below).\
+                                        Generate a list of search queries to gather relevant information. \
+                                         Only generate a maximum of 2 queries."""
 
     def _build_state_graph(self):
         builder = StateGraph(AgentState)
