@@ -101,12 +101,12 @@ Contributions are welcome! Please fork the repository and create a pull request 
    - The frontend displays the final plan to the user.
 
 ### Example Outcomes
+<img width="1277" alt="image" src="https://github.com/user-attachments/assets/1c02564c-27f2-4f43-8ef9-2f839ba53913">
 
 
 ### Improvements
-1. Recent prompts or history
+1. Recent prompts or history to store previous prompts
 2. React markdown for formatting the output response from the AI
-3. Break out Main.jsx for readability
+3. Break out Main.jsx into seperate components for readability
 4. Improve prompts for AI 
 5. Human in the loop to adjust date plans as needed
-6. Implement React animations for sidebar and loading in the AI outputs
