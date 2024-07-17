@@ -37,44 +37,38 @@ class Queries(BaseModel):
 class eresponse():
     def __init__(self):
         self.model = ChatOpenAI(model = "gpt-3.5-turbo", temperature=0)
-        self.PLAN_PROMPT = ("""You are an expert disaster response planner tasked with creating a comprehensive \
-                            response plan for a given disaster scenario. Write such an outline for the user provided \
-                            disaster scenario. Give an outline of the plan along with any relevant notes or instructions \
-                            for the disaster response plan.
+        self.PLAN_PROMPT = ("""You are an expert date planner tasked with creating a comprehensive, interesting, \
+                            and enjoyable date plan for a given prompt. Write such an outline for the user-provided \
+                            prompt, keeping in mind their current location, time, and preferences. \
+                            Provide an outline of the date plan along with any relevant notes or instructions \
+                            for the activities. Follow the example output format:
                             """)
-        self.WRITER_PROMPT = ("""You are a disaster response assistant tasked with executing a comprehensive disaster response plan. \
-                                Utilize the detailed plan provided by the planning agent to implement the response effectively. Your responsibilities include \
-                            coordinating resources, managing communication, and adapting to evolving situations. If there are updates or critiques from \
-                            the planning agent or response teams, adjust your actions accordingly. Utilize all the information below as needed:
-
+        
+        self.WRITER_PROMPT = ("""You are an expert date planner assistant tasked with writing a detailed date plan. \
+                              Generate the best date plan possible for the user’s request and the initial outline. \
+                              If the user provides critique, respond with a revised version of your previous attempts. \
+                              Utilize all the information below as needed and return data in a similar format:
                             ------
-
+                            {content}
+                            """)
+        
+        self.RESEARCH_PLAN_PROMPT = ("""You are an expert researcher tasked with providing information \
+                                     to enhance the following date plan. Generate a list of search \
+                                     queries to gather relevant information, including but not limited \
+                                     to popular restaurants and activities based on social media and internet \
+                                     sources. Generate a maximum of 3 queries.
                             """)
 
-        self.REFLECTION_PROMPT = ("""You are a disaster response expert reviewing a disaster response plan. 
-                            Generate critique and recommendations for the provided plan. 
-                            Provide detailed recommendations, including requests for additional details, improvements in strategy, and suggestions for better resource management and communication.
-                            Ensure your feedback is constructive and actionable.
-
-                            ------
-
+        self.REFLECTION_PROMPT = ("""You are an expert date planner reviewing a date plan. \
+                                  Generate critique and recommendations for the user’s submission.
                             """)
 
-        self.RESEARCH_PLAN_PROMPT = ("""You are a researcher charged with providing information that can 
-                            be used to enhance the following disaster response plan. Generate a list of search queries that will gather 
-                            any relevant information. Only generate 3 queries max. 
-
-                            ------
-
+        self.RESEARCH_CRITIQUE_PROMPT = ("""You are an expert researcher tasked with providing information \
+                                         that can be used for making any requested revisions (as outlined below).\
+                                        Generate a list of search queries to gather relevant information. \
+                                         Only generate a maximum of 2 queries.
                             """)
-
-        self.RESEARCH_CRITIQUE_PROMPT = ("""You are a researcher charged with providing information that can 
-                            be used to make any requested revisions to the disaster response plan (as outlined below). 
-                            Generate a list of search queries that will gather any relevant information. Only generate 3 queries max. 
-
-                            ------
-
-                            """)
+        
         self.tavily = TavilyClient(api_key = os.environ["TAVILY_API_KEY"])
         builder = StateGraph(AgentState)
         builder.add_node("planner", self.plan_node)
@@ -114,7 +108,7 @@ class eresponse():
             SystemMessage(content = self.RESEARCH_PLAN_PROMPT),
             HumanMessage(content = state['task'])
         ])
-        content = state['content'] or [] # add to content
+        content = [] # add to content
         for q in queries.queries:
             response = self.tavily.search(query=q, max_results=2)
             for r in response['results']:
@@ -158,11 +152,12 @@ class eresponse():
             SystemMessage(content = self.RESEARCH_CRITIQUE_PROMPT),
             HumanMessage(content = state['critique'])
         ])
-        content = state['content'] or []
+        content = []
         for q in queries.queries:
             response = self.tavily.search(query=q, max_results=2)
             for r in response['results']:
                 content.append(r['content'])
+        queries.queries.clear()
         return {"content": content,
                 "lnode": "research_critique",
                 "count": 1,
@@ -181,7 +176,7 @@ response_instance = eresponse()
 
 @app.route("/api/disaster-response", methods=['GET', 'POST'])
 def get_disaster_response():
-    task = 'default data'
+    task = 'Generate a date plan in Maryland'
 
     print(request.data)
     if request.method == 'POST':
@@ -196,7 +191,6 @@ def get_disaster_response():
     }, thread):
         print(s)
         result.append(s)
-
     return jsonify(result)
 
 if __name__ == "__main__":
