@@ -102,6 +102,9 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 ### Example Outcomes
 ![Input Screenshot](./client/src/assets/demo_input.png)
+![Output 1 Screenshot](./client/src/assets/demo_output1.png)
+![Output 2 Screenshot](./client/src/assets/demo_output2.png)
+
 
 
 ### Improvements
