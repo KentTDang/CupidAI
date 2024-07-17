@@ -101,7 +101,7 @@ Contributions are welcome! Please fork the repository and create a pull request 
    - The frontend displays the final plan to the user.
 
 ### Example Outcomes
-<img width="1277" alt="image" src="https://github.com/user-attachments/assets/1c02564c-27f2-4f43-8ef9-2f839ba53913">
+![Input Screenshot](./client/src/assets/demo_input.png)
 
 
 ### Improvements
