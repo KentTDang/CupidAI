@@ -29,29 +29,3 @@
     color: grey;
     border: none;
 }
-
-.sidebar .recent {
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar .recent-title {
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-
-.sidebar .recent-entry {
-    display: flex;
-    align-items: start;
-    gap: 10px;
-    padding: 10px;
-    padding-right: 40px;
-    border-radius: 50px;
-    color: 282828;
-    cursor: pointer;
-}
-
-.sidebar .recent-entry:hover {
-   background-color: #e2e6eb;
-}
-
