@@ -41,13 +41,13 @@ class eresponse():
                             and enjoyable date plan for a given prompt. Write such an outline for the user-provided \
                             prompt, keeping in mind their current location, time, and preferences. \
                             Provide an outline of the date plan along with any relevant notes or instructions \
-                            for the activities.
+                            for the activities. Follow the example output format:
                             """)
         
         self.WRITER_PROMPT = ("""You are an expert date planner assistant tasked with writing a detailed date plan. \
                               Generate the best date plan possible for the user’s request and the initial outline. \
                               If the user provides critique, respond with a revised version of your previous attempts. \
-                              Utilize all the information below as needed:
+                              Utilize all the information below as needed and return data in a similar format:
                             ------
                             {content}
                             """)
@@ -191,7 +191,6 @@ def get_disaster_response():
     }, thread):
         print(s)
         result.append(s)
-
     return jsonify(result)
 
 if __name__ == "__main__":
