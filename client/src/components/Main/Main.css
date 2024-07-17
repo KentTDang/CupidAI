@@ -58,7 +58,7 @@
     background-color: #f0f4f9;
     border-radius: 10px;
     position: relative;
-    cursor: pointer;
+    border: none;
 }
 
 .main .card img {
@@ -78,6 +78,20 @@
 
 .main .card:hover {
     background-color: #dfe4ea;
+}
+
+.main .main-content {
+    background-color: #f0f4f9;
+    color: #585858;
+    border-radius: 20px;
+    margin: 12px;
+    font-size: 22px;
+    padding: 8px;
+}
+
+.main .main-content span {
+    font-weight: 700;
+    color: 585858;
 }
 
 .main-bottom {
