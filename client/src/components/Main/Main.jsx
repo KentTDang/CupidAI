@@ -38,7 +38,7 @@ export default function Main() {
   return (
     <div className="main">
       <div className="nav">
-        <p>Tavily</p>
+        <p>Cupid AI</p>
         <img src="" alt="" />
       </div>
       <div className="main-container">
@@ -111,7 +111,7 @@ export default function Main() {
 
           
           <p className="bottom-info">
-            This AI can make mistakes. Check important info.
+            Cupid AI can make mistakes. Check important info.
           </p>
         </div>
       </div>
