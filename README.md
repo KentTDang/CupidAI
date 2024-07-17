@@ -109,3 +109,4 @@ Contributions are welcome! Please fork the repository and create a pull request 
 3. Break out Main.jsx for readability
 4. Improve prompts for AI 
 5. Human in the loop to adjust date plans as needed
+6. Implement React animations for sidebar and loading in the AI outputs
