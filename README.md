@@ -88,14 +88,12 @@ Contributions are welcome! Please fork the repository and create a pull request 
    - The processed date plan is sent back to the frontend.
    - The frontend displays the final plan to the user.
 
-### Example Outcomes
+## Example Outcomes
 ![Input Screenshot](./client/src/assets/demo_input.png)
 ![Output 1 Screenshot](./client/src/assets/demo_output1.png)
 ![Output 2 Screenshot](./client/src/assets/demo_output2.png)
 
-
-
-### Improvements
+## Improvements: Here is how I would improve this project given more time!
 1. Recent prompts or history to store previous prompts
 2. React markdown for formatting the output response from the AI
 3. Break out Main.jsx into seperate components for readability
